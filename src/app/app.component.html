@@ -1,0 +1,30 @@
+<form [formGroup]= "form" (submit)="onSubmit()">
+  <div formArrayName="array">
+    <div class="col" *ngFor="let value of values;let i = index">
+      <div [formGroupName]="i">
+        <div *ngIf="value.boolValue">
+          <div class="custom-control custom-switch mb-3">   
+            <label>{{value.label}}</label>
+          </div>
+          <input type="text" formControlName="label" />
+        </div>
+        <div *ngIf="!value.boolValue">
+          <div class="custom-control custom-switch mb-3">   
+            <label>{{value.label}}</label>
+          </div>
+          <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>      
+   <button class="btn btn-primary btn-lg min-w100 float-right mt-3">
+     Save
+  </button>
+</form>
+
+<pre>{{values | json}}</pre>
